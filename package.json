@@ -1,0 +1,16 @@
+{
+  "name": "dpo-course-checks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "test": "node scripts/smoke-site.mjs",
+    "ci": "npm run check && npm test"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
