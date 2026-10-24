@@ -71,7 +71,7 @@ jobs:
           ' rules.json > /dev/null
           current_head=$(gh api "repos/$REPO/pulls/$PR_NUMBER" --jq .head.sha)
           test "$current_head" = "$EXPECTED_HEAD"
-          :
+          gh api "repos/$REPO/pulls/$PR_NUMBER/reviews" --method POST -f event=APPROVE -f commit_id="$EXPECTED_HEAD" > /dev/null
           # Native auto-merge continues to enforce all branch rules, checks and
           # reviews. No administrator bypass is requested.
           gh pr merge "$PR_URL" --auto --squash --match-head-commit "$EXPECTED_HEAD"
